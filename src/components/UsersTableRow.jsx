@@ -33,9 +33,23 @@ const UsersTableRow = ({ user, dispatch }) => {
         <td className="users-table__row__item">{name}</td>
         <td className="users-table__row__item">{email}</td>
         <td className="users-table__row__item">{role}</td>
-        <td>
-          <button onClick={() => handleOnEditUser(user)}>edit</button>
-          <button onClick={() => handleOnDeleteUser(user.id)}>delete</button>
+        <td className="users-table__row__item">
+          <span className="user-table__row__item__action-container">
+            <button
+              className="users-table__row__action-btn users-table__row__action-btn--edit"
+              onClick={() => handleOnEditUser(user)}
+            >
+              <span className="material-symbols-outlined">edit_note</span>
+              edit
+            </button>
+            <button
+              className="users-table__row__action-btn users-table__row__action-btn--delete"
+              onClick={() => handleOnDeleteUser(user.id)}
+            >
+              <span className="material-symbols-outlined">delete</span>
+              delete
+            </button>
+          </span>
         </td>
       </tr>
     </>

@@ -11,12 +11,16 @@ const DeleteSelctedUserButton = ({ users, dispatch }) => {
   }
 
   return (
-    <button disabled={selectedUsers.length ? false : true}
+    <button
+      disabled={selectedUsers.length ? false : true}
+      className="delete-selected-users-btn"
       onClick={handleOnDeleteButtonClick}
     >
-      🗑️ Delete Selected Users {selectedUsers.length}
+      <span class="material-symbols-outlined">delete_forever</span>
+      Delete {selectedUsers.length} Selected Users
     </button>
   );
 };
+
 
 export default DeleteSelctedUserButton;

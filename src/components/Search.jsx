@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import '../styles/DashBoard/Search.css'
 
 const Search = ({users, searchText, dispatch}) => {
 

@@ -190,9 +190,10 @@ const usersReducer = (state, action) => {
           state.currentPage,
           action.payload,
           state._allUsers,
-          state.isAllUsersSelected
+          false
         ),
         searchText: "",
+        isAllUsersSelected: false
       };
     }
     case "OPEN_USER_EDIT_DIALOG": {

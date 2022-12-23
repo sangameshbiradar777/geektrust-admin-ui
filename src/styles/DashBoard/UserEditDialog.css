@@ -1,0 +1,87 @@
+.dialog-container {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dialog {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-09);
+  width: 60%;
+  background-color: #fff;
+  padding: var(--spacing-09) var(--spacing-09);
+  border-radius: var(--spacing-11);
+}
+
+.dialog__header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dialog__header__heading {
+  font-size: var(--fs-03);
+}
+
+.dialog__header__btn {
+  background-color: transparent;
+  border-radius: 50%;
+  padding: var(--spacing-10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dialog__header__btn:hover {
+  background-color: #ddd;
+}
+
+.dialog__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-10);
+}
+
+.dialog__content__item {
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.dialog__content__item label {
+  font-size: var(--fs-05);
+  text-transform: capitalize;
+  font-weight: 500;
+  margin-bottom: var(--spacing-11);
+}
+
+.dialog__content__item input {
+  font-size: var(--fs-04);
+  padding: var(--spacing-10);
+}
+
+.dialog__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--spacing-10);
+}
+
+.dialog__actions__btn {
+  font-size: var(--fs-04);
+  padding: var(--spacing-10) var(--spacing-09);
+  border-radius: var(--spacing-11);
+  cursor: pointer;
+}
+
+.dialog__actions__btn--save {
+  background-color: var(--primary-dark);
+  color: #fff;
+}
+
+.dialog__actions__btn--cancel {
+  background-color: #eee;
+}

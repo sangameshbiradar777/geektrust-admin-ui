@@ -7,10 +7,10 @@ const PaginationListItems = ({totalPages, handleOnPaginationItemClick, currentPa
     return (
       <li
         key={index}
-        onClick={() => handleOnPaginationItemClick(index + 1)}
+        onClick={(e) => handleOnPaginationItemClick(e, index + 1)}
         className={className}
       >
-        {index + 1}
+        <a href="#">{index + 1}</a>
       </li>
     );
   });

@@ -44,27 +44,35 @@ Converted to 10px for easy calculations,
 
 /* Color palette */
 :root {
-  --primary-main: #6F8DEA;
-  --primay-darK: #5971bb;
+  --primary-main: #6f8dea;
+  --primary-dark: #5971bb;
   --primary-light: #7d98ec;
-  --secondary-main: #7F8FA8;
+  --secondary-main: #7f8fa8;
   --secondary-dark: #728197;
   --secondary-light: #8c9ab1;
-  --danger-main: #F20000;
+  --danger-main: #f20000;
   --danger-dark: #da0000;
   --danger-light: #f76666;
-  --gray-01: #B5BBC4;
-  --text: #111111;
+  --gray-01: #36383b;
+  --gray-02: #5b5e62;
+  --gray-03: #91969d;
+  --gray-04: #a3a8b0;
+  --gray-05: #b5bbc4;
+  --text-01: #111111;
+  --text-02: #292929;
+  --text-03: #414141;
+  --text-05: #585858;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  transition: all 0.2s;
 }
 
 body {
-  font-family: 'Manrope', sans-serif;
+  font-family: "Manrope", sans-serif;
 }
 
 #root {
@@ -72,61 +80,31 @@ body {
   margin: 0 auto;
 }
 
-
-
-.table-container {
-  overflow-x: auto;
+.App {
+  padding: var(--spacing-08) var(--spacing-10);
 }
 
-.users-table__row--selected {
-  background-color: #999;
-}
-
-.users-table__row__item {
-  font-size: 1.6rem;
-  white-space: nowrap;
-}
-
-.users-table__row__item [type='checkbox'] {
-  height: 15px;
-  width: 15px;
-} 
-
-.users-table__row--header .users-table__row__item {
-  text-align: left;
-}
-
-.pagination-list {
-  display: flex;
-  justify-content: center;
-}
-
-.pagination-list__item {
-  list-style-type: none;
-  font-size: 1.5rem;
-  padding: 10px;
-  background-color: #ddd;
+button {
+  outline: none;
+  border: none;
   cursor: pointer;
 }
 
-.pagination-list__item--active {
-  background-color: #999;
+button:focus,
+a:focus {
+  box-shadow: 0 0 0 var(--spacing-11) rgba(0 0 0 / 0.2);
 }
 
-.pagination-list__item--icon > span {
-  font-size: 2rem;
+input[type="text"] {
+  outline: none;
+  border: 2px solid var(--gray-04);
+  border-radius: var(--spacing-11);
 }
 
-.pagination-list__item--disabled {
-  color: #999;
-  cursor: not-allowed;
+input[type="text"]:hover {
+  border-color: var(--gray-02);
 }
-
-.dialog-container {
-  position: fixed;
-  inset: 0;
-  background-color: rgba(0, 0, 0, .2);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+input[type="text"]:focus {
+  border: 2px solid var(--primary-dark);
+  box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px, rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
 }

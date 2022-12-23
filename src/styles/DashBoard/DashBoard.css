@@ -1,0 +1,25 @@
+.dashboard {
+  width: 100%;
+}
+
+.delete-selected-users-btn {
+  padding: var(--spacing-10) var(--spacing-09);
+  background-color: var(--danger-main);
+  color: #fff;  
+  border-radius: var(--spacing-11);
+  font-size: var(--fs-05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-11);
+}
+
+.delete-selected-users-btn:disabled {
+  background-color: #ccc;
+  color: #888;
+  cursor: not-allowed;
+}
+
+.delete-selected-users-btn > span {
+  font-size: var(--fs-04);
+}

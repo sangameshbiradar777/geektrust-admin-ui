@@ -15,34 +15,36 @@ const PaginationActionItems = ({ handleOnPaginationItemClick, children, totalPag
 
   return (
     <>
-      <li
-        onClick={() => handleOnPaginationItemClick(FIRST_PAGE)}
-        className={prevPageListItemClassName}
-      >
-        <span className="material-symbols-outlined">
-          keyboard_double_arrow_left
-        </span>
+      <li className={prevPageListItemClassName}>
+        <a href="#" onClick={(e) => handleOnPaginationItemClick(e, FIRST_PAGE)}>
+          <span className="material-symbols-outlined">
+            keyboard_double_arrow_left
+          </span>
+        </a>
       </li>
-      <li
-        onClick={() => handleOnPaginationItemClick(currentPage - 1)}
-        className={prevPageListItemClassName}
-      >
-        <span className="material-symbols-outlined">chevron_left</span>
+      <li className={prevPageListItemClassName}>
+        <a
+          href="#"
+          onClick={(e) => handleOnPaginationItemClick(e, currentPage - 1)}
+        >
+          <span className="material-symbols-outlined">chevron_left</span>
+        </a>
       </li>
       {children}
-      <li
-        onClick={() => handleOnPaginationItemClick(currentPage + 1)}
-        className={nextPageListItemClassName}
-      >
-        <span className="material-symbols-outlined">navigate_next</span>
+      <li className={nextPageListItemClassName}>
+        <a
+          href="#"
+          onClick={(e) => handleOnPaginationItemClick(e, currentPage + 1)}
+        >
+          <span className="material-symbols-outlined">navigate_next</span>
+        </a>
       </li>
-      <li
-        onClick={() => handleOnPaginationItemClick(LAST_PAGE)}
-        className={nextPageListItemClassName}
-      >
-        <span className="material-symbols-outlined">
-          keyboard_double_arrow_right
-        </span>
+      <li className={nextPageListItemClassName}>
+        <a href="#" onClick={(e) => handleOnPaginationItemClick(e, LAST_PAGE)}>
+          <span className="material-symbols-outlined">
+            keyboard_double_arrow_right
+          </span>
+        </a>
       </li>
     </>
   );

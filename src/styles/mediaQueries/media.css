@@ -1,0 +1,23 @@
+@media screen and (min-width: 0) {
+  .delete-selected-users-btn {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 40em) {
+  .header__title {
+    font-size: var(--fs-02);
+  }
+}
+
+@media screen and (min-width: 50em) {
+  .App {
+    padding: var(--spacing-06) var(--spacing-08);
+  }
+}
+
+@media screen and (min-width: 80em) {
+  .header__title {
+    font-size: var(--fs-01);
+  }
+}

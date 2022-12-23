@@ -1,0 +1,9 @@
+.header {
+  margin-bottom: var(--spacing-08);
+}
+
+.header__title {
+  font-family: 'Epilogue', sans-serif;
+  font-size: var(--fs-03);
+  color: var(--text);
+}

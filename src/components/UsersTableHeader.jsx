@@ -1,7 +1,7 @@
-
 import { useState, useEffect, useRef } from "react";
 
-const UsersTableHeader = ({users, isAllUserSelected, dispatch, currentPage}) => {
+const UsersTableHeader = ({ users, isAllUsersSelected, dispatch, currentPage }) => {
+  console.log(isAllUsersSelected)
 
   const userTableHeaderColumns = ['Name', 'Email', 'Role', 'Actions'];
 
@@ -20,7 +20,7 @@ const UsersTableHeader = ({users, isAllUserSelected, dispatch, currentPage}) => 
       <tr>
         <th className="users-table__row__item">
           <input
-            checked={isAllUserSelected}
+            checked={isAllUsersSelected}
             type="checkbox"
             onChange={handleOnAllUserSelectToggle}
           />

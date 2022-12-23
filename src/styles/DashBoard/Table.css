@@ -1,0 +1,89 @@
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin-bottom: var(--spacing-08);
+}
+
+.users-table {
+  width: 100%;
+  max-width: 100%;
+  border-spacing: 0 var(--spacing-11);
+  border-collapse: collapse;
+}
+
+.users-table__row {
+  border-bottom: 1px solid #ddd;
+}
+
+.users-table__row--selected {
+  background-color: var(--gray-05);
+}
+
+.users-table__row:not(.users-table__row--selected):hover {
+  background-color: #eee;
+}
+
+.users-table__row__item {
+  padding: var(--spacing-11) var(--spacing-10);
+}
+
+.users-table__row__item input[type='checkbox'] {
+  transform: scale(1.1);
+  accent-color: var(--primary-dark);
+}
+
+.users-table__row__item {
+  font-size: var(--fs-04);
+  white-space: nowrap;
+}
+
+.users-table__row__item [type='checkbox'] {
+  height: 15px;
+  width: 15px;
+} 
+
+.users-table__row--header .users-table__row__item {
+  text-align: left;
+}
+
+.user-table__row__item__action-container {
+  display: flex;
+  gap: var(--spacing-10);
+}
+
+.users-table__row__action-btn {
+  display: flex;
+  gap: var(--spacing-11);
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-10) var(--spacing-10);
+  background-color: transparent;
+  border-radius: var(--spacing-11);
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+.users-table__row__action-btn span {
+  font-size: var(--spacing-09);
+}
+
+
+.users-table__row__action-btn--edit {
+  background-color: var(--primary-main);
+  color: white;
+}
+
+.users-table__row__action-btn--delete {
+  border: 1px solid var(--danger-dark);
+}
+
+.users-table__row__action-btn--edit:hover {
+  background-color: var(--primary-main);
+}
+
+.users-table__row__action-btn--delete:hover {
+  background-color: var(--danger-light);
+}
+
+
+

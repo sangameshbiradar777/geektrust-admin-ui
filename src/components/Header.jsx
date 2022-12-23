@@ -1,7 +1,11 @@
+import "../styles/Header/Header.css";
+
 const Header = () => {
   return (
-    <h1>Geektrust Admin UI Challenge</h1>
-  )
-}
+    <header className="header">
+      <h1 className="header__title">Geektrust Admin UI Challenge</h1>
+    </header>
+  );
+};
 
 export default Header;
