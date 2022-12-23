@@ -5,9 +5,11 @@ const initialState = {
   _allUsers: [],
   users: [],
   currentPageUsers: [],
+  currentUserBeingEdited: {},
   searchText: "",
   isLoadingUsers: false,
   isAllUsersSelected: false,
+  isUserEditDialogOpen: false,
   currentPage: 1,
   error: "",
 };
@@ -82,6 +84,19 @@ const updateCurrentPageUsersOnDelete = (
   return getCurrentPageUsers(updatedCurrentPageUsers, updatedPageNumber, isAllUsersSelected);
 };
 
+const getUpdatedUsers = (users, updatedUser) => {
+  console.log('users', users, 'updatedUser', updatedUser)
+  return users.map(user => {
+    if (user.id === updatedUser.id) return { ...user, ...updatedUser }
+    return user;
+  })
+}
+
+const getUpdatedCurrentPageUsers = (users, updatedUser, currentPage, isAllUsersSelected) => {
+  const updatedUsers = getUpdatedUsers(users, updatedUser);
+  return getCurrentPageUsers(updatedUsers, currentPage, isAllUsersSelected)
+}
+
 const usersReducer = (state, action) => {
   console.log(action.type)
   switch (action.type) {
@@ -115,7 +130,11 @@ const usersReducer = (state, action) => {
       return {
         ...state,
         currentPage: action.payload,
-        currentPageUsers: getCurrentPageUsers(state.users, action.payload, state.isAllUsersSelected),
+        currentPageUsers: getCurrentPageUsers(
+          state.users,
+          action.payload,
+          state.isAllUsersSelected
+        ),
       };
     }
     case "UPDATE_SEARCH_TEXT": {
@@ -128,7 +147,11 @@ const usersReducer = (state, action) => {
       return {
         ...state,
         users: action.payload,
-        currentPageUsers: getCurrentPageUsers(action.payload, FIRST_PAGE, state.isAllUsersSelected),
+        currentPageUsers: getCurrentPageUsers(
+          action.payload,
+          FIRST_PAGE,
+          state.isAllUsersSelected
+        ),
         currentPage: 1,
       };
     }
@@ -137,7 +160,7 @@ const usersReducer = (state, action) => {
         ...state,
         currentPageUsers: toggleUserSelect(
           state.currentPageUsers,
-          action.payload,
+          action.payload
         ),
       };
     }
@@ -169,8 +192,31 @@ const usersReducer = (state, action) => {
           state._allUsers,
           state.isAllUsersSelected
         ),
-        searchText: ''
+        searchText: "",
       };
+    }
+    case "OPEN_USER_EDIT_DIALOG": {
+      return {
+        ...state,
+        isUserEditDialogOpen: true,
+        currentUserBeingEdited: action.payload,
+      };
+    }
+    case "CLOSE_USER_EDIT_DIALOG": {
+      return {
+        ...state,
+        isUserEditDialogOpen: false,
+      };
+    }
+    case 'UPDATE_USER': {
+      return {
+        ...state,
+        _allUsers: getUpdatedUsers(state._allUsers, action.payload),
+        users: getUpdatedUsers(state.users, action.payload),
+        currentPageUsers: getUpdatedCurrentPageUsers(state.users, action.payload, state.currentPage, state.isAllUsersSelected),
+        isUserEditDialogOpen: false
+      };
+          
     }
     default: {
       throw new Error("Invalid action type");

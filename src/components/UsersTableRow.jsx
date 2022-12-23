@@ -1,8 +1,6 @@
-import { useState } from "react";
 import UserEditDialog from "./UserEditDialog";
 
 const UsersTableRow = ({ user, dispatch }) => {
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const { name, email, role, id, selected } = user;
 
@@ -15,8 +13,7 @@ const UsersTableRow = ({ user, dispatch }) => {
   };
 
   const handleOnEditUser = (user) => {
-    setIsDialogOpen(true);
-    
+    dispatch({ type: "OPEN_USER_EDIT_DIALOG", payload: user });
   };
 
   const rowClassName = `users-table__row ${
@@ -41,10 +38,6 @@ const UsersTableRow = ({ user, dispatch }) => {
           <button onClick={() => handleOnDeleteUser(user.id)}>delete</button>
         </td>
       </tr>
-
-      {isDialogOpen && (
-        <UserEditDialog user={user} isDialogOpen={isDialogOpen} />
-      )}
     </>
   );
 };

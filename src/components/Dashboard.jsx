@@ -7,6 +7,7 @@ import { initialState, usersReducer } from "../reducers/usersReducer";
 import Pagination from "./Pagination";
 import DeleteSelctedUserButton from "./DeleteSelectedUserButton";
 import Error from './Error';
+import UserEditDialog from "./UserEditDialog";
 
 const Dashboard = () => {
   const [state, dispatch] = useReducer(usersReducer, initialState);
@@ -32,7 +33,11 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard">
-      <Search users={state._allUsers} searchText={state.searchText} dispatch={dispatch} />
+      <Search
+        users={state._allUsers}
+        searchText={state.searchText}
+        dispatch={dispatch}
+      />
       {!state.error ? (
         <>
           <UsersTable
@@ -40,6 +45,12 @@ const Dashboard = () => {
             dispatch={dispatch}
             currentPage={state.currentPage}
           />
+          {state.isUserEditDialogOpen && (
+            <UserEditDialog
+              user={state.currentUserBeingEdited}
+              dispatch={dispatch}
+            />
+          )}
           <Pagination
             currentPage={state.currentPage}
             totalPages={totalPages}
