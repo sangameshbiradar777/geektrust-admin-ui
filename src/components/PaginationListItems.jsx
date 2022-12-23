@@ -6,6 +6,7 @@ const PaginationListItems = ({totalPages, handleOnPaginationItemClick, currentPa
 
     return (
       <li
+        key={index}
         onClick={() => handleOnPaginationItemClick(index + 1)}
         className={className}
       >

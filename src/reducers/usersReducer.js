@@ -1,16 +1,89 @@
+import { NO_OF_USERS_PER_PAGE } from "../config";
+const FIRST_PAGE = 1;
+
 const initialState = {
   _allUsers: [],
   users: [],
   currentPageUsers: [],
-  selectedUsers: [],
+  searchText: "",
   isLoadingUsers: false,
+  isAllUsersSelected: false,
   currentPage: 1,
-  totalPages: 0,
-  noOfUsersPerPage: 10,
   error: "",
 };
 
+const getCurrentPageUsers = (users, currentPage, isAllUsersSelected) => {
+  const startIndex = currentPage * NO_OF_USERS_PER_PAGE - NO_OF_USERS_PER_PAGE;
+  const endIndex = currentPage * NO_OF_USERS_PER_PAGE;
+  return users
+    .slice(startIndex, endIndex)
+    .map((user) => ({ ...user, selected: isAllUsersSelected }));
+};
+
+const toggleUserSelect = (users, targetUserId) => {
+  return users.map((user) => {
+    if (user.id === targetUserId) return { ...user, selected: !user.selected };
+    else return user;
+  });
+};
+
+const deleteUsers = (users, targetUsers, allUsers = users) => {
+  if (!Array.isArray(targetUsers)) targetUsers = [targetUsers];
+  
+  const updatedUsers = users.filter((user) => !targetUsers.includes(user.id));
+  console.log('updated users', updatedUsers)
+  if (!updatedUsers.length) {
+    const remainingUsers = allUsers.filter((user) => !targetUsers.includes(user.id));
+    console.log('reamaining', remainingUsers);
+    return remainingUsers.length ? remainingUsers : [];
+  }
+
+  return updatedUsers;
+};
+
+const toggleAllCurrentPageUsersSelect = (users, isSelect) => {
+  if (isSelect) {
+    return users.map((user) => ({ ...user, selected: true }));
+  } else {
+    return users.map((user) => ({ ...user, selected: false }));
+  }
+};
+
+const updateCurrentPageOnDelete = (
+  users,
+  currentPage,
+  targetUsers,
+  allUsers
+) => {
+  const updatedUsers = deleteUsers(users, targetUsers, allUsers);
+  if (
+    updatedUsers.length <=
+    currentPage * NO_OF_USERS_PER_PAGE - NO_OF_USERS_PER_PAGE
+  ) {
+    return currentPage - 1;
+  }
+  return currentPage;
+};
+
+const updateCurrentPageUsersOnDelete = (
+  users,
+  currentPage,
+  targetUsers,
+  allUsers,
+  isAllUsersSelected
+) => {
+  const updatedPageNumber = updateCurrentPageOnDelete(
+    users,
+    currentPage,
+    targetUsers,
+    allUsers
+  );
+  const updatedCurrentPageUsers = deleteUsers(users, targetUsers, allUsers);
+  return getCurrentPageUsers(updatedCurrentPageUsers, updatedPageNumber, isAllUsersSelected);
+};
+
 const usersReducer = (state, action) => {
+  console.log(action.type)
   switch (action.type) {
     case "USERS_REQUEST_START": {
       return {
@@ -24,11 +97,11 @@ const usersReducer = (state, action) => {
         isLoadingUsers: false,
         users: action.payload,
         _allUsers: action.payload,
-        currentPageUsers: action.payload.slice(
-          state.currentPage * state.noOfUsersPerPage - state.noOfUsersPerPage,
-          state.currentPage * state.noOfUsersPerPage
+        currentPageUsers: getCurrentPageUsers(
+          action.payload,
+          state.currentPage,
+          state.isAllUsersSelected
         ),
-        totalPages: Math.ceil(action.payload.length / state.noOfUsersPerPage),
       };
     }
     case "USERS_REQUEST_FAILURE": {
@@ -38,50 +111,66 @@ const usersReducer = (state, action) => {
         error: action.payload,
       };
     }
-    case "SELECT_USERS": {
-      return {
-        ...state,
-        selectedUsers: action.payload,
-      };
-    }
     case "UPDATE_CURRENT_PAGE": {
       return {
         ...state,
         currentPage: action.payload,
-        currentPageUsers: state.users.slice(
-          action.payload * state.noOfUsersPerPage - state.noOfUsersPerPage,
-          action.payload * state.noOfUsersPerPage
-        ),
+        currentPageUsers: getCurrentPageUsers(state.users, action.payload, state.isAllUsersSelected),
+      };
+    }
+    case "UPDATE_SEARCH_TEXT": {
+      return {
+        ...state,
+        searchText: action.payload,
       };
     }
     case "UPDATE_USERS_ON_SEARCH": {
       return {
         ...state,
         users: action.payload,
-        currentPageUsers: action.payload.slice(
-          state.currentPage * state.noOfUsersPerPage - state.noOfUsersPerPage,
-          state.currentPage * state.noOfUsersPerPage
-        ),
+        currentPageUsers: getCurrentPageUsers(action.payload, FIRST_PAGE, state.isAllUsersSelected),
         currentPage: 1,
-        totalPages: Math.ceil(action.payload.length / state.noOfUsersPerPage),
       };
     }
-    case "SELECT_USER": {
+    case "TOGGLE_USER_SELECT": {
       return {
         ...state,
-        selectedUsers: state.selectedUsers.find((user) => user.id === action.payload)
-          ? state.selectedUsers.filter((user) => user.id !== action.payload)
-          : [
-              ...state.selectedUsers,
-              state.currentPageUsers.find((user) => user.id === action.payload),
-            ],
+        currentPageUsers: toggleUserSelect(
+          state.currentPageUsers,
+          action.payload,
+        ),
       };
     }
-    case 'SELECT_ALL_CURRENT_PAGE_USERS': {
+    case "TOGGLE_ALL_CURRENT_PAGE_USERS_SELECT": {
       return {
         ...state,
-        selectedUsers: action.payload ? currentPageUsers : [];
-      }
+        isAllUsersSelected: action.payload,
+        currentPageUsers: toggleAllCurrentPageUsersSelect(
+          state.currentPageUsers,
+          action.payload
+        ),
+      };
+    }
+    case "DELETE_USERS": {
+      return {
+        ...state,
+        _allUsers: deleteUsers(state._allUsers, action.payload),
+        users: deleteUsers(state.users, action.payload, state._allUsers),
+        currentPage: updateCurrentPageOnDelete(
+          state.users,
+          state.currentPage,
+          action.payload,
+          state._allUsers
+        ),
+        currentPageUsers: updateCurrentPageUsersOnDelete(
+          state.users,
+          state.currentPage,
+          action.payload,
+          state._allUsers,
+          state.isAllUsersSelected
+        ),
+        searchText: ''
+      };
     }
     default: {
       throw new Error("Invalid action type");

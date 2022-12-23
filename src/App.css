@@ -12,6 +12,10 @@
   overflow-x: auto;
 }
 
+.users-table__row--selected {
+  background-color: #999;
+}
+
 .users-table__row__item {
   font-size: 1.6rem;
   white-space: nowrap;
@@ -50,4 +54,13 @@
 .pagination-list__item--disabled {
   color: #999;
   cursor: not-allowed;
+}
+
+.dialog-container {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, .2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
