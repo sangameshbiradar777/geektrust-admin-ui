@@ -24,6 +24,6 @@ The app is ready to be deployed!
 
 ### Other libraries used
 
-axios - For network requests
+axios - For network requests.\
 focus-trap-react - To Trap the focus and tabbing to user edit modal to have improved accessibility.
 
