@@ -14,6 +14,7 @@
 
 .users-table__row {
   border-bottom: 1px solid var(--gray-04);
+  transition: all 0.2s;
 }
 
 .users-table__row--selected {
