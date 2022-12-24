@@ -18,6 +18,10 @@
     width: max-content;
     margin: 0 auto;
   }
+
+  .error__message {
+  font-size: var(--fs-02);
+  }
 }
 
 @media screen and (min-width: 50em) {

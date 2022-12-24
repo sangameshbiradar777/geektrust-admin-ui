@@ -1,4 +1,4 @@
-import * as utils from '../utils/utils';
+import * as utils from "../utils/utils";
 const FIRST_PAGE = 1;
 
 const initialState = {
@@ -14,8 +14,7 @@ const initialState = {
   error: {},
 };
 
-
-const usersReducer = (state, {type, payload}) => {
+const usersReducer = (state, { type, payload }) => {
   switch (type) {
     case "USERS_REQUEST_START": {
       return {
@@ -79,6 +78,7 @@ const usersReducer = (state, {type, payload}) => {
           state.currentPageUsers,
           payload
         ),
+        isAllUsersSelected: false,
       };
     }
     case "TOGGLE_ALL_CURRENT_PAGE_USERS_SELECT": {

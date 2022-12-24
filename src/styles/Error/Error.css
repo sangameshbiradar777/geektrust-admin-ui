@@ -3,7 +3,7 @@
 }
 
 .error__message {
-  font-size: var(--fs-02);
+  font-size: var(--fs-03);
   color: var(--gray-03);
   text-align: center;
 }
