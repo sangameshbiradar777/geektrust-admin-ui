@@ -1,6 +1,6 @@
 import UserEditDialog from "./UserEditDialog";
 
-const UsersTableRow = ({ user, dispatch }) => {
+const UsersTableRow = ({ user, dispatch, index }) => {
 
   const { name, email, role, id, selected } = user;
 
@@ -26,6 +26,7 @@ const UsersTableRow = ({ user, dispatch }) => {
         <td className="users-table__row__item">
           <input
             checked={selected}
+            aria-label={`select-user-${index + 1}`}
             type="checkbox"
             onChange={() => handleOnUserRowSelect(id)}
           />
@@ -40,14 +41,14 @@ const UsersTableRow = ({ user, dispatch }) => {
               onClick={() => handleOnEditUser(user)}
             >
               <span className="material-symbols-outlined">edit_note</span>
-              edit
+              {/* edit */}
             </button>
             <button
               className="users-table__row__action-btn users-table__row__action-btn--delete"
               onClick={() => handleOnDeleteUser(user.id)}
             >
               <span className="material-symbols-outlined">delete</span>
-              delete
+              {/* delete */}
             </button>
           </span>
         </td>

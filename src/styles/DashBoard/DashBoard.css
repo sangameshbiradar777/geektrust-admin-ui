@@ -4,10 +4,11 @@
 
 .no-users-container {
   width: 100%;
+  margin-top: var(--spacing-09);
 }
 
 .no-users__message {
-  font-size: var(--fs-02);
+  font-size: var(--fs-03);
   color: var(--gray-03);
   display: flex;
   align-items: center;
@@ -16,7 +17,7 @@
 }
 
 .no-users__message span {
-  font-size: var(--fs-01);
+  font-size: var(--fs-02);
 }
 
 .delete-selected-users-btn {

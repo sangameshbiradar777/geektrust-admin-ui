@@ -20,7 +20,15 @@
   }
 
   .error__message {
-  font-size: var(--fs-02);
+    font-size: var(--fs-02);
+  }
+
+  .no-users__message {
+    font-size: var(--fs-02);
+  }
+
+  .no-users__message span {
+    font-size: var(--fs-01);
   }
 }
 

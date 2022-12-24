@@ -1,4 +1,4 @@
-const UsersTableHeader = ({ users, isAllUsersSelected, dispatch, currentPage }) => {
+const UsersTableHeader = ({ isAllUsersSelected, dispatch }) => {
 
   const userTableHeaderColumns = ['Name', 'Email', 'Role', 'Actions'];
 
@@ -18,6 +18,7 @@ const UsersTableHeader = ({ users, isAllUsersSelected, dispatch, currentPage }) 
         <th className="users-table__row__item">
           <input
             checked={isAllUsersSelected}
+            aria-label='select-all-users'
             type="checkbox"
             onChange={handleOnAllUserSelectToggle}
           />

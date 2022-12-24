@@ -48,7 +48,7 @@
   gap: var(--spacing-11);
   align-items: center;
   justify-content: center;
-  padding: var(--spacing-10) var(--spacing-10);
+  padding: var(--spacing-11) var(--spacing-11);
   background-color: transparent;
   border-radius: var(--spacing-11);
   text-transform: capitalize;
@@ -56,7 +56,7 @@
 }
 
 .users-table__row__action-btn span {
-  font-size: var(--spacing-09);
+  font-size: var(--spacing-08);
   transition: none;
 }
 
