@@ -9,6 +9,7 @@
   max-width: 100%;
   border-spacing: 0 var(--spacing-11);
   border-collapse: collapse;
+  min-height: var(--spacing-01);
 }
 
 .users-table__row {
@@ -60,8 +61,13 @@
   transition: none;
 }
 
+.users-table__row__action-btn--edit {
+  color: var(--primary-dark);
+}
+
 .users-table__row__action-btn--delete {
   border: 1px solid transparent;
+  color: var(--gray-02);
 }
 
 /* States */
