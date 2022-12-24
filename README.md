@@ -8,6 +8,7 @@ The Available Scripts in the challenge solution are
 
 ### `npm start`
 
+Installs all the dependencies.\
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
@@ -26,4 +27,3 @@ The app is ready to be deployed!
 
 axios - For network requests.\
 focus-trap-react - To Trap the focus and tabbing to user edit modal to have improved accessibility.
-

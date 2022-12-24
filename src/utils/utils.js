@@ -1,4 +1,4 @@
-import { NO_OF_USERS_PER_PAGE } from "../config";
+import { NO_OF_USERS_PER_PAGE } from "../config/config";
 
 const getCurrentPageUsers = (users, currentPage, isAllUsersSelected) => {
   const startIndex = currentPage * NO_OF_USERS_PER_PAGE - NO_OF_USERS_PER_PAGE;

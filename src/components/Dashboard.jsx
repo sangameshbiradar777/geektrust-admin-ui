@@ -1,4 +1,4 @@
-import { USERS_ENDPOINT, NO_OF_USERS_PER_PAGE } from "../config.js";
+import { USERS_ENDPOINT, NO_OF_USERS_PER_PAGE } from "../config/config.js";
 import { useReducer, useEffect, useRef } from "react";
 import { initialState, usersReducer } from "../reducers/usersReducer";
 import Loader from "./Loader";
