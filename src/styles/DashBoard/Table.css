@@ -9,7 +9,6 @@
   max-width: 100%;
   border-spacing: 0 var(--spacing-11);
   border-collapse: collapse;
-  min-height: var(--spacing-01);
 }
 
 .users-table__row {
@@ -27,12 +26,11 @@
   padding: var(--spacing-11) var(--spacing-10);
 }
 
-.users-table__row__item input[type='checkbox'] {
-   height: var(--spacing-09);
+.users-table__row__item input[type="checkbox"] {
+  height: var(--spacing-09);
   width: var(--spacing-09);
   transform: scale(1.1);
   accent-color: var(--primary-dark);
-
 }
 
 .users-table__row--header .users-table__row__item {
@@ -72,7 +70,7 @@
 }
 
 /* States */
-.users-table__row:not(.users-table__row--selected):hover{
+.users-table__row:not(.users-table__row--selected):hover {
   background-color: var(--gray-05);
 }
 
@@ -89,6 +87,3 @@
   border-color: var(--danger-main);
   color: var(--danger-dark);
 }
-
-
-
