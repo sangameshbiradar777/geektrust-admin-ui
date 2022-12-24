@@ -12,35 +12,26 @@
 }
 
 .users-table__row {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--gray-04);
 }
 
 .users-table__row--selected {
-  background-color: var(--gray-05);
-}
-
-.users-table__row:not(.users-table__row--selected):hover {
-  background-color: #eee;
-}
-
-.users-table__row__item {
-  padding: var(--spacing-11) var(--spacing-10);
-}
-
-.users-table__row__item input[type='checkbox'] {
-  transform: scale(1.1);
-  accent-color: var(--primary-dark);
+  background-color: var(--gray-04);
 }
 
 .users-table__row__item {
   font-size: var(--fs-04);
   white-space: nowrap;
+  padding: var(--spacing-11) var(--spacing-10);
 }
 
-.users-table__row__item [type='checkbox'] {
-  height: 15px;
-  width: 15px;
-} 
+.users-table__row__item input[type='checkbox'] {
+   height: var(--spacing-09);
+  width: var(--spacing-09);
+  transform: scale(1.1);
+  accent-color: var(--primary-dark);
+
+}
 
 .users-table__row--header .users-table__row__item {
   text-align: left;
@@ -65,24 +56,34 @@
 
 .users-table__row__action-btn span {
   font-size: var(--spacing-09);
+  transition: none;
 }
 
-
 .users-table__row__action-btn--edit {
-  background-color: var(--primary-main);
-  color: white;
+  /* border: 1px solid var(--primary-dark); */
 }
 
 .users-table__row__action-btn--delete {
-  border: 1px solid var(--danger-dark);
+  border: 1px solid transparent;
+}
+
+/* States */
+.users-table__row:not(.users-table__row--selected):hover{
+  background-color: var(--gray-05);
+}
+
+.users-table__row.users-table__row--header:hover {
+  background-color: transparent;
 }
 
 .users-table__row__action-btn--edit:hover {
   background-color: var(--primary-main);
+  color: var(--text-light);
 }
 
 .users-table__row__action-btn--delete:hover {
-  background-color: var(--danger-light);
+  border-color: var(--danger-main);
+  color: var(--danger-dark);
 }
 
 

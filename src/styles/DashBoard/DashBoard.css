@@ -5,7 +5,7 @@
 .delete-selected-users-btn {
   padding: var(--spacing-10) var(--spacing-09);
   background-color: var(--danger-main);
-  color: #fff;  
+  color: var(--text-light);  
   border-radius: var(--spacing-11);
   font-size: var(--fs-05);
   display: flex;
@@ -14,12 +14,22 @@
   gap: var(--spacing-11);
 }
 
-.delete-selected-users-btn:disabled {
-  background-color: #ccc;
-  color: #888;
+.delete-selected-users-btn:disabled,
+.delete-selected-users-btn:disabled:hover,
+.delete-selected-users-btn:disabled:focus,
+.delete-selected-users-btn:disabled:active  {
+  background-color: var(--gray-03);
+  color: var(--gray-05);
   cursor: not-allowed;
 }
 
 .delete-selected-users-btn > span {
   font-size: var(--fs-04);
 }
+
+.delete-selected-users-btn:hover,
+.delete-selected-users-btn:focus,
+.delete-selected-users-btn:active {
+  background-color: var(--danger-light);
+}
+

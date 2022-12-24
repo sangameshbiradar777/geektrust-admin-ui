@@ -44,9 +44,9 @@ Converted to 10px for easy calculations,
 
 /* Color palette */
 :root {
-  --primary-main: #6f8dea;
-  --primary-dark: #5971bb;
-  --primary-light: #7d98ec;
+  --primary-main: #2343F2;
+  --primary-dark: #1c36c2;
+  --primary-light: #3956f3;
   --secondary-main: #7f8fa8;
   --secondary-dark: #728197;
   --secondary-light: #8c9ab1;
@@ -56,12 +56,13 @@ Converted to 10px for easy calculations,
   --gray-01: #36383b;
   --gray-02: #5b5e62;
   --gray-03: #91969d;
-  --gray-04: #a3a8b0;
-  --gray-05: #b5bbc4;
+  --gray-04: #d3d9fc;
+  --gray-05: #e9ecfe;
+  --text-light: #fff;
   --text-01: #111111;
   --text-02: #292929;
   --text-03: #414141;
-  --text-05: #585858;
+  --text-04: #585858;
 }
 
 * {
@@ -95,16 +96,21 @@ a:focus {
   box-shadow: 0 0 0 var(--spacing-11) rgba(0 0 0 / 0.2);
 }
 
+button:active,
+a:active {
+  transform: scale(0.9);
+}
+ 
 input[type="text"] {
   outline: none;
-  border: 2px solid var(--gray-04);
+  border: 2px solid #bdc7fb;
   border-radius: var(--spacing-11);
 }
 
 input[type="text"]:hover {
-  border-color: var(--gray-02);
+  border-color: #7b8ef7;
 }
 input[type="text"]:focus {
   border: 2px solid var(--primary-dark);
-  box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px, rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+  box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px, rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px, rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
 }

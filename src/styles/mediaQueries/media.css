@@ -12,6 +12,11 @@
   .dialog {
     width: 60%;
   }
+
+  .delete-selected-users-btn {
+    width: max-content;
+    margin: 0 auto;
+  }
 }
 
 @media screen and (min-width: 50em) {

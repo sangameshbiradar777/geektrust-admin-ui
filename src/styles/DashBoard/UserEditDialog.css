@@ -2,7 +2,7 @@
   position: fixed;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(5px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,6 +16,7 @@
   background-color: #fff;
   padding: var(--spacing-09) var(--spacing-09);
   border-radius: var(--spacing-11);
+  box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
 }
 
 .dialog__header {
@@ -34,10 +35,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.dialog__header__btn:hover {
-  background-color: #ddd;
 }
 
 .dialog__content {
@@ -78,10 +75,25 @@
 }
 
 .dialog__actions__btn--save {
-  background-color: var(--primary-dark);
-  color: #fff;
+  background-color: var(--primary-main);
+  color: var(--text-light);
 }
 
 .dialog__actions__btn--cancel {
-  background-color: #eee;
+  background-color: var(--gray-05);
 }
+
+.dialog__actions__btn--save:hover,
+.dialog__actions__btn--save:active,
+.dialog__actions__btn--save:focus
+ {
+  background-color: var(--primary-dark);
+}
+
+.dialog__actions__btn--cancel:hover,
+.dialog__actions__btn--cancel:active,
+.dialog__actions__btn--cancel:focus
+ {
+  background-color: var(--gray-04);
+}
+

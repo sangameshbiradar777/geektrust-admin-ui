@@ -1,4 +1,3 @@
-
 .pagination-list {
   display: flex;
   justify-content: center;
@@ -27,11 +26,23 @@
   color: var(--text-03);
 }
 
+.pagination-list__item--disabled a {
+  color: #999;
+  cursor: not-allowed;
+  border-color: var(--gray-03);
+}
+
 .pagination-list__item--active a {
   background-color: var(--primary-dark);
   color: #fff;
 }
 
+.pagination-list__item--icon a > span {
+  font-size: var(--fs-03);
+}
+
+
+/* States */
 .pagination-list__item a:hover {
   transform: scale(1.1);
 }
@@ -46,20 +57,11 @@
   transform: scale(1);
 }
 
-.pagination-list__item--icon a > span {
-  font-size: var(--fs-03);
-}
-
-.pagination-list__item--disabled a {
-  color: #999;
-  cursor: not-allowed;
-  border-color: var(--gray-03);
-}
-
 .pagination-list__item--disabled a:hover,
 .pagination-list__item--disabled a:focus,
 .pagination-list__item--disabled a:active {
   background-color: transparent;
   transform: scale(1);
   color: #999;
+  box-shadow: none;
 }
