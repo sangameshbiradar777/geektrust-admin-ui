@@ -1,7 +1,4 @@
-import { useState, useEffect, useRef } from "react";
-
 const UsersTableHeader = ({ users, isAllUsersSelected, dispatch, currentPage }) => {
-  console.log(isAllUsersSelected)
 
   const userTableHeaderColumns = ['Name', 'Email', 'Role', 'Actions'];
 

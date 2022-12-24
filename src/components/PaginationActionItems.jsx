@@ -1,4 +1,9 @@
-const PaginationActionItems = ({ handleOnPaginationItemClick, children, totalPages, currentPage }) => {
+const PaginationActionItems = ({
+  handleOnPaginationItemClick,
+  children,
+  totalPages,
+  currentPage,
+}) => {
   const FIRST_PAGE = 1;
   const LAST_PAGE = totalPages;
 

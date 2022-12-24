@@ -23,7 +23,6 @@ const Search = ({users, searchText, dispatch}) => {
 
   useEffect(() => {
     const searchTextMatchingUsers = getSearchTextMatchingUsers(searchText);
-    console.log(searchTextMatchingUsers, 'hi')
     dispatch({ type: 'UPDATE_USERS_ON_SEARCH', payload: searchTextMatchingUsers });
   }, [searchText])
 

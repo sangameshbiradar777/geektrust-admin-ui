@@ -3,10 +3,7 @@ const DeleteSelctedUserButton = ({ users, dispatch }) => {
     .filter((user) => user.selected)
     .map((user) => user.id);
 
-  console.log(selectedUsers);
-
   const handleOnDeleteButtonClick = () => {
-    console.log('click')
     dispatch({type: 'DELETE_USERS', payload: selectedUsers})
   }
 
@@ -16,7 +13,7 @@ const DeleteSelctedUserButton = ({ users, dispatch }) => {
       className="delete-selected-users-btn"
       onClick={handleOnDeleteButtonClick}
     >
-      <span class="material-symbols-outlined">delete_forever</span>
+      <span className="material-symbols-outlined">delete_forever</span>
       Delete {selectedUsers.length} Selected Users
     </button>
   );

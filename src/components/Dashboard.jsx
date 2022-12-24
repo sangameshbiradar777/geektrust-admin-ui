@@ -1,43 +1,41 @@
+import { USERS_ENDPOINT, NO_OF_USERS_PER_PAGE } from "../config.js";
+import { useReducer, useEffect, useRef } from "react";
+import { initialState, usersReducer } from "../reducers/usersReducer";
+import Loader from "./Loader";
 import Search from "./Search";
 import UsersTable from "./UsersTable";
-import { USERS_ENDPOINT, NO_OF_USERS_PER_PAGE } from '../config.js';
-import { useReducer, useEffect, useRef } from "react";
 import axios from "axios";
-import { initialState, usersReducer } from "../reducers/usersReducer";
 import Pagination from "./Pagination";
 import DeleteSelctedUserButton from "./DeleteSelectedUserButton";
-import Error from './Error';
+import Error from "./Error";
 import UserEditDialog from "./UserEditDialog";
-import '../styles/DashBoard/DashBoard.css';
+import "../styles/DashBoard/DashBoard.css";
 
 const Dashboard = () => {
   const [state, dispatch] = useReducer(usersReducer, initialState);
   const totalPages = Math.ceil(state.users.length / NO_OF_USERS_PER_PAGE);
   const nameInputRef = useRef(null);
 
-  console.log(state);
-
   useEffect(() => {
     if (state.isUserEditDialogOpen) {
       nameInputRef.current.focus();
     }
-  }, [state.isUserEditDialogOpen])
+  }, [state.isUserEditDialogOpen]);
 
   const getUsers = async () => {
-    dispatch({ type: 'USERS_REQUEST_START' });
+    dispatch({ type: "USERS_REQUEST_START" });
     try {
       const usersResponse = await axios.get(USERS_ENDPOINT);
       const users = usersResponse.data;
-      dispatch({ type: 'USERS_REQUEST_SUCCESS', payload: users });
+      dispatch({ type: "USERS_REQUEST_SUCCESS", payload: users });
+    } catch (error) {
+      dispatch({ type: "USERS_REQUEST_FAILURE", payload: error });
     }
-    catch (error) {
-      dispatch({ type: 'USERS_REQUEST_FAILURE', payload: error.message });
-    }
-  }
+  };
 
   useEffect(() => {
     getUsers();
-  }, [])
+  }, []);
 
   const dashBoardElements = (
     <>
@@ -46,34 +44,51 @@ const Dashboard = () => {
         searchText={state.searchText}
         dispatch={dispatch}
       />
-      <UsersTable
-        users={state.currentPageUsers}
-        dispatch={dispatch}
-        currentPage={state.currentPage}
-        isAllUsersSelected={state.isAllUsersSelected}
-      />
-      {state.isUserEditDialogOpen && (
-          <UserEditDialog
-            user={state.currentUserBeingEdited}
+      {state.users.length ? (
+        <>
+          <UsersTable
+            users={state.currentPageUsers}
             dispatch={dispatch}
-            ref={nameInputRef}
+            currentPage={state.currentPage}
+            isAllUsersSelected={state.isAllUsersSelected}
           />
+          {state.isUserEditDialogOpen && (
+            <UserEditDialog
+              user={state.currentUserBeingEdited}
+              dispatch={dispatch}
+              ref={nameInputRef}
+            />
+          )}
+          <Pagination
+            currentPage={state.currentPage}
+            totalPages={totalPages}
+            dispatch={dispatch}
+          />
+          <DeleteSelctedUserButton
+            users={state.currentPageUsers}
+            dispatch={dispatch}
+          />{" "}
+        </>
+      ) : (
+        <div className="no-users-container">
+          <h2 className="no-users__message">
+            <span className="material-symbols-outlined">mood_bad</span>
+            Sorry, No users found!
+          </h2>
+        </div>
       )}
-      <Pagination
-        currentPage={state.currentPage}
-        totalPages={totalPages}
-        dispatch={dispatch}
-      />
-      <DeleteSelctedUserButton
-        users={state.currentPageUsers}
-        dispatch={dispatch}
-      />
     </>
   );
 
   return (
     <div className="dashboard">
-        {state.error ? <Error message={state.error} /> : dashBoardElements}
+      {state.isLoadingUsers ? (
+        <Loader />
+      ) : state.error.code ? (
+        <Error error={state.error} />
+      ) : (
+        dashBoardElements
+      )}
     </div>
   );
 };

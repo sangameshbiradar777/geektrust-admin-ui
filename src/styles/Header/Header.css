@@ -5,5 +5,5 @@
 .header__title {
   font-family: 'Epilogue', sans-serif;
   font-size: var(--fs-03);
-  color: var(--primary-dark);
+  color: var(--text-02);
 }

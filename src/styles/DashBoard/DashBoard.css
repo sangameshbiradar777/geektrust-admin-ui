@@ -2,6 +2,23 @@
   width: 100%;
 }
 
+.no-users-container {
+  width: 100%;
+}
+
+.no-users__message {
+  font-size: var(--fs-02);
+  color: var(--gray-03);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-10);
+}
+
+.no-users__message span {
+  font-size: var(--fs-01);
+}
+
 .delete-selected-users-btn {
   padding: var(--spacing-10) var(--spacing-09);
   background-color: var(--danger-main);

@@ -97,3 +97,9 @@
   background-color: var(--gray-04);
 }
 
+.dialog__header__btn:hover,
+.dialog__header__btn:active,
+.dialog__header__btn:focus {
+  background-color: var(--gray-04);
+}
+

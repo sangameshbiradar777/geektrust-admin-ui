@@ -35,6 +35,7 @@
 
 .users-table__row--header .users-table__row__item {
   text-align: left;
+  color: var(--text-01);
 }
 
 .user-table__row__item__action-container {
@@ -57,10 +58,6 @@
 .users-table__row__action-btn span {
   font-size: var(--spacing-09);
   transition: none;
-}
-
-.users-table__row__action-btn--edit {
-  /* border: 1px solid var(--primary-dark); */
 }
 
 .users-table__row__action-btn--delete {
